@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnnoZZero - Band Musicale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e variabili */
+        :root {
+            --primary: #ff0000;
+            --secondary: #000000;
+            --accent: #ffffff;
+            --text: #333333;
+            --light-bg: #0a0a0a;
+            --dark-bg: #000000;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --neon-glow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary), 0 0 20px var(--primary), 0 0 25px var(--primary);
+            --zz-glow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff9900, 0 0 40px #ff9900, 0 0 50px #ff9900;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--accent);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 0, 0.1) 0%, transparent 40%);
+            cursor: auto ;
+        }
+        
+        /* Custom cursor */
+    /*    .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+        }
+        
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: all 0.15s ease-out;
+        }
+        
+        .cursor-dot.cursor-expand {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 0, 0, 0.3);
+            mix-blend-mode: difference;
+        }
+        
+        .cursor-outline.cursor-expand {
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255, 0, 0, 0.5);
+        }
+     */   
+        /* Particelle di scia del mouse */
+        .mouse-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9997;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .trail-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: trail-animation 1s forwards;
+        }
+        
+        @keyframes trail-animation {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+        }
+        
+        /* Tipografia */
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            letter-spacing: 8px;
+            text-shadow: 3px 3px 0 #000, 6px 6px 0 rgba(255, 0, 0, 0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        h2 {
+            font-size: 3rem;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        section {
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Stile speciale per le doppie Z - MODIFICATO */
+        .double-z {
+            display: inline-block;
+            position: relative;
+            color: #ff9900;
+            text-shadow: var(--zz-glow);
+            animation: zz-pulse 2s infinite alternate;
+            transform: skew(-5deg, 0);
+            margin: 0 2px;
+            width: 0.9em;
+            height: 1em;
+            vertical-align: middle;
+        }
+        
+        @keyframes zz-pulse {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff9900;
+                transform: skew(-5deg, 0) scale(1);
+            }
+            100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff9900, 0 0 40px #ff9900;
+                transform: skew(-5deg, 0) scale(1.1);
+            }
+        }
+        
+        /* Stile per le Z sovrapposte - MODIFICATO */
+        .z-top {
+            position: absolute;
+            top: -0.55em; /* Aumentato da -0.35em a -0.55em */
+            left: 0;
+            color: #ffcc00;
+            transform: rotate(0deg);
+            z-index: 2;
+            text-shadow: 2px 2px 0 #ff6600;
+            font-size: 1em;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .z-bottom {
+            position: absolute;
+            top: 0.15em; /* Lasciato invariato */
+            left: 0;
+            color: #ff9900;
+            z-index: 1;
+            text-shadow: 2px 2px 0 #cc5200;
+            transform: rotate(0deg);
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Particelle di sfondo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 0, 0, 0.3);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-40px) translateX(-10px); }
+            75% { transform: translateY(-20px) translateX(-15px); }
+        }
+        
+        /* Header e navigazione */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 30px rgba(255, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: var(--neon-glow);
+            transition: var(--transition);
+        }
+        
+        .logo .double-z {
+            font-size: 2.2rem;
+            margin: 0 2px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, var(--dark-bg));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 2;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            letter-spacing: 12px;
+            animation: glitch 5s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            5% { transform: translate(-2px, -2px); }
+            10% { transform: translate(2px, 2px); }
+            15% { transform: translate(-2px, 2px); }
+            20% { transform: translate(2px, -2px); }
+            25% { transform: translate(0); }
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--accent);
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            z-index: 1;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background: #ff3333;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.7);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Music section */
+        .music {
+            background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .music:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .album-card {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .album-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+        }
+        
+        .album-img {
+            height: 280px;
+            background: linear-gradient(45deg, #333, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .album-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), transparent);
+        }
+        
+        .album-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .album-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .album-info p {
+            color: #aaa;
+        }
+        
+        /* Tour dates */
+        .tour {
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tour:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .dates-list {
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .date-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(20, 20, 20, 0.7);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+        
+        .date-item:hover {
+            border-left: 4px solid var(--primary);
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+        }
+        
+        .date-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .date-day {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-right: 20px;
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .date-details h3 {
+            margin-bottom: 5px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .date-details p {
+            color: #aaa;
+        }
+        
+        /* Gallery */
+        .gallery {
+            background: var(--light-bg);
+            position: relative;
+        }
+        
+        .gallery:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(45deg, #222, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .gallery-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover:before {
+            opacity: 1;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3);
+        }
+        
+        /* Bio section */
+        .bio {
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bio:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .bio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bio-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .bio-image {
+            height: 450px;
+            background: linear-gradient(45deg, #333, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        
+        .bio-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), transparent);
+        }
+        
+        /* Contact */
+        .contact {
+            background: var(--light-bg);
+            position: relative;
+        }
+        
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/black-twill.png');
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-form {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--accent);
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+        }
+        
+        .info-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 20px;
+            text-shadow: var(--neon-glow);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+            margin-right: 15px;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--accent);
+            padding: 80px 0 40px;
+            position: relative;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: var(--neon-glow);
+        }
+        
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .footer-links h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Nuove sezioni */
+        /* Sezione Video */
+        .videos {
+            background: var(--dark-bg);
+            position: relative;
+        }
+        
+        .videos:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .video-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            height: 280px;
+            background: linear-gradient(45deg, #222, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+        }
+        
+        .video-item i {
+            font-size: 4rem;
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+        .video-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.3), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .video-item:hover:before {
+            opacity: 1;
+        }
+        
+        .video-item:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* Sezione Shop */
+        .shop {
+            background: var(--light-bg);
+            position: relative;
+        }
+        
+        .shop:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .product-card {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+        }
+        
+        .product-img {
+            height: 200px;
+            background: linear-gradient(45deg, #333, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .product-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .product-info .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        /* Sezione Newsletter */
+        .newsletter {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .newsletter-form input {
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+            text-align: center;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Audio Player */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 50px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .audio-player:hover {
+            transform: scale(1.05);
+        }
+        
+        .audio-player button {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+        
+        .audio-player button:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .volume-control {
+            width: 80px;
+            margin-left: 10px;
+            -webkit-appearance: none;
+            height: 5px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+        
+        .volume-control::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 4rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 5rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .bio-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio:after {
+                display: none;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+                border-left: 1px solid rgba(255, 0, 0, 0.2);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 25px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger i {
+                font-size: 2rem;
+                color: var(--accent);
+                transition: var(--transition);
+            }
+            
+            .hamburger.active i {
+                color: var(--primary);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 20px;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: 8px;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .date-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date-info {
+                margin-bottom: 20px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+            
+            .album-img, .gallery-item {
+                height: 200px;
+            }
+            
+            .bio-image {
+                height: 300px;
+            }
+            
+            .video-item {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                max-width: 900px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 15px;
+                padding: 40px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                text-align: center;
+                backdrop-filter: blur(10px);
+            }
+            
+            .audio-player {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                border-radius: 10px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio elementi -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://assets.codepen.io/572859/rock_music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="hoverSound">
+        <source src="https://assets.codepen.io/572859/hover_sound.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="clickSound">
+        <source src="https://assets.codepen.io/572859/click_sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Cursore personalizzato -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Scia del mouse -->
+    <div class="mouse-trail"></div>
+    
+    <!-- Particelle di sfondo -->
+    <div class="particles">
+        <div class="particle" style="top: 20%; left: 10%; width: 8px; height: 8px; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 60%; left: 80%; width: 12px; height: 12px; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 40%; left: 50%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 80%; left: 30%; width: 10px; height: 10px; animation-delay: 3s;"></div>
+    </div>
+    
+    <!-- Audio Player -->
+    <div class="audio-player">
+        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+        <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+        <input type="range" id="volumeControl" class="volume-control" min="0" max="1" step="0.1" value="0.5">
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Anno<span class="double-z">
+                <span class="z-top">Z</span>
+                <span class="z-bottom">Z</span>
+            </span>ero</a>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#music">Musica</a></li>
+                <li><a href="#tour">Tour</a></li>
+                <li><a href="#videos">Video</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#bio">Bio</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="band-name">Anno<span class="double-z">
+                <span class="z-top">Z</span>
+                <span class="z-bottom">Z</span>
+            </span>ero</h1>
+            <div class="hero-content">
+                <p>Il suono che rompe il silenzio. La rivoluzione del rock italiano.</p>
+                <div class="hero-buttons">
+                    <a href="#music" class="btn">Ascolta ora</a>
+                    <a href="#tour" class="btn btn-outline">Prossimi concerti</a>
+                </div>
+            </div>
+            
+            <!-- Elementi di design animati -->
+            <div class="particles">
+                <div class="particle" style="top: 20%; left: 10%; width: 8px; height: 8px; animation-delay: 0s;"></div>
+                <div class="particle" style="top: 60%; left: 80%; width: 12px; height: 12px; animation-delay: 1s;"></div>
+                <div class="particle" style="top: 40%; left: 50%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+                <div class="particle" style="top: 80%; left: 30%; width: 10px; height: 10px; animation-delay: 3s;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="music" id="music">
+        <div class="container text-center">
+            <h2>La nostra musica</h2>
+            <p>Scopri i nostri ultimi album e brani</p>
+            
+            <div class="album-grid">
+                <div class="album-card">
+                    <div class="album-img">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <div class="album-info">
+                        <h3>Rinascita</h3>
+                        <p>2023 - Album</p>
+                    </div>
+                </div>
+                
+                <div class="album-card">
+                    <div class="album-img">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <div class="album-info">
+                        <h3>Oltre il buio</h3>
+                        <p>2021 - EP</p>
+                    </div>
+                </div>
+                
+                <div class="album-card">
+                    <div class="album-img">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <div class="album-info">
+                        <h3>Primo capitolo</h3>
+                        <p>2019 - Album</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px;">
+                <a href="#" class="btn"><i class="fab fa-spotify"></i> Ascolta su Spotify</a>
+                <a href="#" class="btn"><i class="fab fa-apple"></i> Ascolta su Apple Music</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Dates -->
+    <section class="tour" id="tour">
+        <div class="container">
+            <h2 class="text-center">Prossime date</h2>
+            
+            <div class="dates-list">
+                <div class="date-item">
+                    <div class="date-info">
+                        <div class="date-day">15</div>
+                        <div class="date-details">
+                            <h3>Roma Live Festival</h3>
+                            <p>Roma, Auditorium Parco della Musica</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Biglietti</a>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-info">
+                        <div class="date-day">22</div>
+                        <div class="date-details">
+                            <h3>Rock in City</h3>
+                            <p>Milano, Alcatraz</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Biglietti</a>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-info">
+                        <div class="date-day">30</div>
+                        <div class="date-details">
+                            <h3>Summer Vibes</h3>
+                            <p>Bologna, Estragon</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Biglietti</a>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-info">
+                        <div class="date-day">05</div>
+                        <div class="date-details">
+                            <h3>Music Revolution</h3>
+                            <p>Firenze, Viper Theatre</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Biglietti</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="videos" id="videos">
+        <div class="container text-center">
+            <h2>I nostri video</h2>
+            <p>Guarda i nostri ultimi videoclip e performance live</p>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="video-item">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="video-item">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container text-center">
+            <h2>Gallery</h2>
+            <p>Momenti dai nostri live e dal backstage</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item"><i class="fas fa-image"></i></div>
+                <div class="gallery-item"><i class="fas fa-image"></i></div>
+                <div class="gallery-item"><i class="fas fa-image"></i></div>
+                <div class="gallery-item"><i class="fas fa-image"></i></div>
+                <div class="gallery-item"><i class="fas fa-image"></i></div>
+                <div class="gallery-item"><i class="fas fa-image"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop" id="shop">
+        <div class="container text-center">
+            <h2>Shop</h2>
+            <p>Acquista il nostro merchandise ufficiale</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>T-Shirt AnnoZZero</h3>
+                        <p>T-shirt in cotone con stampa fronte/retro</p>
+                        <div class="price">€25.00</div>
+                        <a href="#" class="btn">Acquista</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-record-vinyl"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Vinile Limited Edition</h3>
+                        <p>Edizione speciale vinile colorado</p>
+                        <div class="price">€35.00</div>
+                        <a href="#" class="btn">Acquista</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-hat-cowboy"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cappello AnnoZZero</h3>
+                        <p>Cappello con logo ricamato</p>
+                        <div class="price">€20.00</div>
+                        <a href="#" class="btn">Acquista</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>CD Autografato</h3>
+                        <p>CD con firma autografa della band</p>
+                        <div class="price">€30.00</div>
+                        <a href="#" class="btn">Acquista</a>
+                    </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="bio" id="bio">
+        <div class="container">
+            <h2 class="text-center">La nostra storia</h2>
+            
+            <div class="bio-content">
+                <div class="bio-text">
+                    <p>Anno<span class="double-z">
+                        <span class="z-top">Z</span>
+                        <span class="z-bottom">Z</span>
+                    </span>ero nasce nel 2018 dall'incontro di quattro musicisti con background diversi ma uniti dalla stessa passione per il rock potenti e le melodie indimenticabili.</p>
+                    <p>Dopo i primi concerti locali, la band inizia a farsi notare nella scena musicale italiana, culminando con la pubblicazione del primo album "Primo Capitolo" nel 2019.</p>
+                    <p>Il suono degli Anno<span class="double-z">
+                        <span class="z-top">Z</span>
+                        <span class="z-bottom">Z</span>
+                    </span>ero mescola influenze rock internazionali con testi in italiano che raccontano storie de vita, resilienza e trasformazione.</p>
+                    <p>Oggi, con all'attivo tre produzioni discograficas e centinaia di concerti in tutta Italia, gli Anno<span class="double-z">
+                        <span class="z-top">Z</span>
+                        <span class="z-bottom">Z</span>
+                    </span>ero si confermano como una delle realtà più interessanti del rock italiano contemporaneo.</p>
+                </div>
+                
+                <div class="bio-image">
+                    <i class="fas fa-music"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container text-center">
+            <h2>Rimani Aggiornato</h2>
+            <p>Iscriviti alla nostra newsletter per ricevere news e contenuti esclusivi</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="La tua email" required>
+                <button type="submit" class="btn">Iscriviti</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="text-center">Contattaci</h2>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Messaggio</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Invia messaggio</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@annozzero.it</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telefono</h3>
+                            <p>+39 123 456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Booking</h3>
+                            <p>booking@annozzero.it</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Anno<span class="double-z">
+                        <span class="z-top">Z</span>
+                        <span class="z-bottom">Z</span>
+                    </span>ero</div>
+                    <p>La nuova forza del rock italiano. Potente, autentico, emozionante.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Link veloci</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href#music">Musica</a></li>
+                        <li><a href="#tour">Tour</a></li>
+                        <li><a href="#videos">Video</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#bio">Bio</a></li>
+                        <li><a href="#contact">Contatti</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Supporto</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Termini e condizioni</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Anno<span class="double-z">
+                    <span class="z-top">Z</span>
+                    <span class="z-bottom">Z</span>
+                </span>ero. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Elementi audio
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const hoverSound = document.getElementById('hoverSound');
+        const clickSound = document.getElementById('clickSound');
+        
+        // Controllo musica di sottofondo
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeControl = document.getElementById('volumeControl');
+        
+        let isPlaying = false;
+        
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                backgroundMusic.play().catch(e => {
+                    console.log("L'autoplay è stato bloccato. Interagisci con la pagina per attivare l'audio.");
+                });
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+            playClickSound();
+        });
+        
+        muteBtn.addEventListener('click', () => {
+            backgroundMusic.muted = !backgroundMusic.muted;
+            muteBtn.innerHTML = backgroundMusic.muted ? 
+                '<i class="fas fa-volume-mute"></i>' : 
+                '<i class="fas fa-volume-up"></i>';
+            playClickSound();
+        });
+        
+        volumeControl.addEventListener('input', () => {
+            backgroundMusic.volume = volumeControl.value;
+        });
+        
+        // Effetti sonori per hover e click
+        function playHoverSound() {
+            hoverSound.currentTime = 0;
+            hoverSound.volume = 0.3;
+            hoverSound.play().catch(e => console.log("Audio non disponibile"));
+        }
+        
+        function playClickSound() {
+            clickSound.currentTime = 0;
+            clickSound.volume = 0.5;
+            clickSound.play().catch(e => console.log("Audio non disponibile"));
+        }
+        
+        // Cursore personalizzato
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            
+            cursorOutline.style.left = e.clientX + 'px';
+            cursorOutline.style.top = e.clientY + 'px';
+        });
+        
+        // Scia del mouse
+        const mouseTrail = document.querySelector('.mouse-trail');
+        let trailInterval;
+        
+        document.addEventListener('mousemove', (e) => {
+            clearTimeout(trailInterval);
+            
+            const trailParticle = document.createElement('div');
+            trailParticle.classList.add('trail-particle');
+            trailParticle.style.left = e.clientX + 'px';
+            trailParticle.style.top = e.clientY + 'px';
+            
+            mouseTrail.appendChild(trailParticle);
+            
+            // Rimuovi le particelle dopo l'animazione
+            setTimeout(() => {
+                trailParticle.remove();
+            }, 1000);
+            
+            // Crea un intervallo per la scia continua
+            trailInterval = setTimeout(() => {
+                // Continua a creare particelle anche quando il mouse si ferma
+                const continuedParticle = document.createElement('div');
+                continuedParticle.classList.add('trail-particle');
+                continuedParticle.style.left = e.clientX + 'px';
+                continuedParticle.style.top = e.clientY + 'px';
+                
+                mouseTrail.appendChild(continuedParticle);
+                
+                setTimeout(() => {
+                    continuedParticle.remove();
+                }, 1000);
+            }, 50);
+        });
+        
+        // Effetto espansione cursore su hover
+        document.querySelectorAll('a, button, .nav-menu li, .gallery-item, .album-card, .video-item, .product-card').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorDot.classList.add('cursor-expand');
+                cursorOutline.classList.add('cursor-expand');
+                playHoverSound();
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursorDot.classList.remove('cursor-expand');
+                cursorOutline.classList.remove('cursor-expand');
+            });
+            
+            element.addEventListener('click', (e) => {
+                if (element.tagName === 'A' && element.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = element.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                playClickSound();
+            });
+        });
+        
+        // Menu mobile toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            playClickSound();
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Simple form validation
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && message) {
+                    alert('Grazie per il tuo messaggio! Ti risponderemo al più presto.');
+                    contactForm.reset();
+                } else {
+                    alert('Per favore, compila tutti i campi.');
+                }
+            });
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                if (emailInput.value) {
+                    alert('Grazie per esserti iscritto alla nostra newsletter!');
+                    emailInput.value = '';
+                }
+            });
+        }
+        
+        // Animazione elementi al scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.album-card, .date-item, .gallery-item, .info-item, .video-item, .product-card').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Tentativo di avviare automaticamente la musica (potrebbe essere bloccato dai browser)
+        window.addEventListener('click', function initialPlay() {
+            if (!isPlaying) {
+                backgroundMusic.play().then(() => {
+                    isPlaying = true;
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }).catch(e => {
+                    console.log("L'autoplay è stato bloccato. Clicca sul pulsante play per attivare l'audio.");
+                });
+                window.removeEventListener('click', initialPlay);
+            }
+        });
+    </script>
+</body>
+</html>
