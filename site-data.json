@@ -1,0 +1,138 @@
+{
+  "site": {
+    "name": "AnnoZzero",
+    "tagline": "gruppo musicale",
+    "email": "annozzerocontatti@gmail.com",
+    "manager": "CHIARA LAVATELLI Management",
+    "logo": "images/logo.webp",
+    "social": {
+      "instagram": "https://www.instagram.com/annozzero_official",
+      "facebook": "https://www.facebook.com/AnnoZzero",
+      "spotify": "https://open.spotify.com/artist/annozzero",
+      "youtube": "https://www.youtube.com/@annozzero",
+      "tiktok": "https://www.tiktok.com/@annozzero"
+    }
+  },
+
+  "hero": {
+    "background": "images/band/gruppo.jpg",
+    "tagline_highlight": "Ora Sono Vera",
+    "tagline_rest": "il docufilm sulle AnnoZzero",
+    "subtitle": "In uscita nel 2026",
+    "cta_text": "Ascolta ora",
+    "cta_link": "#musica"
+  },
+
+  "bio": {
+    "title": "La nostra storia",
+    "image": "images/band/gruppo-scritta.png",
+    "paragraphs": [
+      "Maria Grazia Bozzini (detta Bozz) ed Elena Borile condividono sia la vita di coppia che la passione per la musica dal 2002. Il 18 gennaio dello stesso anno pubblicano, come <strong>Double-B</strong>, il loro primo singolo, intitolato VOLERÒ.",
+      "Nel 2005 incontrano Gianmario De Maria, procuratore legale di numerosi personaggi dello spettacolo, il quale decide di prenderle sotto la propria ala. Questo incontro segna una svolta decisiva: il duo cambia nome in <strong>AnnoZzero</strong>, mantenendo la doppia \"z\" in omaggio al nickname di Maria Grazia, Bozz. Ha così inizio il loro primo progetto musicale e, con la scrittura del brano UN SOGNO PER DOMANI, partono le attività promozionali e le prime ospitate televisive.",
+      "Nel febbraio 2009 presentano il loro CD e l'annesso videoclip al THE CLUB di Milano. Da quel momento, le esibizioni nei principali locali milanesi – tra cui The Beach, Just Cavalli, Old Fashion e molti altri – consolidano la presenza delle AnnoZzero sia nel panorama musicale che in quello dello spettacolo.",
+      "Nel giugno 2022 le AnnoZzero tornano con tante novità. Grazie alla collaborazione con la manager <strong>Chiara Lavatelli</strong> e il produttore discografico <strong>Giancarlo Boselli</strong>, nasce un nuovo progetto musicale composto da tre EP e una sorpresa speciale dedicata ai fan di sempre.",
+      "A settembre 2023 il singolo CHIARA ottiene grande successo nel mondo digitale. A dicembre arriva l'uscita dell'EP <strong>ORA</strong>, segnando un nuovo capitolo nel percorso artistico del duo.",
+      "Il regista <strong>Marco Sgorbati</strong> dà vita al docufilm <strong>ORA SONO VERA</strong>, un progetto contro l'omofobia e il bullismo. Con l'uscita del secondo EP <strong>SONO</strong>, le AnnoZzero tentano la strada spagnola con il singolo <em>Inconsciente</em>. Da ottobre 2025 il duo torna dal vivo tra teatri e pub."
+    ]
+  },
+
+  "musica": {
+    "title": "Musica",
+    "releases": [
+      {
+        "title": "SONO",
+        "type": "NUOVO EP",
+        "cover": "images/covers/sono.jpg",
+        "link": "https://ko-fi.com/s/2e897dd967",
+        "featured": true
+      },
+      {
+        "title": "Inconsapevoli REMIX",
+        "type": "SINGOLO",
+        "cover": "images/covers/inconsapevoli-remix.jpg",
+        "link": "https://ko-fi.com/s/cea451c66c"
+      },
+      {
+        "title": "Inconsciente",
+        "type": "SINGOLO",
+        "cover": "images/covers/inconsciente.jpg",
+        "link": "https://ko-fi.com/s/8bec2b78a7"
+      },
+      {
+        "title": "Inconscio",
+        "type": "SINGOLO",
+        "cover": "images/covers/inconscio.jpg",
+        "link": "https://ko-fi.com/s/34d1b91609"
+      },
+      {
+        "title": "College 80",
+        "type": "SINGOLO",
+        "cover": "images/covers/college-80.jpg",
+        "link": "https://ko-fi.com/s/bd36e4aa39"
+      },
+      {
+        "title": "ORA",
+        "type": "EP",
+        "description": "Chiara | Falsario | Sa Di Te | Io Voglio Viverla | Inconsapevoli 1992",
+        "cover": "images/covers/ora.jpg",
+        "link": "https://ko-fi.com/s/c391454298"
+      }
+    ]
+  },
+
+  "live": {
+    "title": "Prossimi live",
+    "events": [
+      { "venue": "HYSTERICAL SISTERS", "city": "VESPOLATE (NO)", "date": "2026-03-20" },
+      { "venue": "NEL CORTILE DI MARIA", "city": "PRATO SESIA (NO)", "date": "2026-04-19" },
+      { "venue": "HYSTERICAL SISTERS", "city": "VESPOLATE (NO)", "date": "2026-05-09" },
+      { "venue": "IL CORTILE DI MILANO", "city": "MILANO", "date": "2026-05-15" },
+      { "venue": "SANREMO", "city": "SANREMO", "date": "2026-07-01" }
+    ]
+  },
+
+  "video": {
+    "title": "Video",
+    "items": [
+      { "title": "Docufilm Trailer — Ora Sono Vera", "youtube_id": "AdR6xYj_hLw" },
+      { "title": "Inconscio", "youtube_id": "kCnXKESHJ2A" },
+      { "title": "Chiara", "youtube_id": "laqlUY_YE8w" },
+      { "title": "Sa Di Te", "youtube_id": "OFmgJouoXlw" },
+      { "title": "Inconsapevoli 1992", "youtube_id": "3kK0pKr8jKc" }
+    ]
+  },
+
+  "press": {
+    "title": "Press & News",
+    "articles": [
+      { "date": "2026-02-27", "title": "«Inconsciente», el nuevo single de AnnoZzero en España y Latinoamérica", "link": "https://factomania.es/inconsciente-el-nuevo-single-de-annozzero-disponible-en-todas-las-emisoras-de-radio-de-espana-y-latinoamerica/" },
+      { "date": "2026-02-06", "title": "\"Inconsciente\", el nuevo single de AnnoZzero", "link": "https://artistasvalientes.com/musica/a-partir-del-9-de-enero-de-2026-inconsciente-el-nuevo-single-de-annozzero-disponible-en-todas-las-emisoras-de-radio-de-espana-y-latinoamerica-2/" },
+      { "date": "2026-01-29", "title": "AnnoZzero y su primer sencillo en castellano \"Inconsciente\"", "link": "https://lamusicadelgarage.org/noticia/2309355/annozzero-y-su-primer-sencillo-en-castellano-inconsciente" },
+      { "date": "2026-01-09", "title": "AnnoZzero conquista el mercado hispanohablante con «Inconsciente»", "link": "https://festivalea.es/annozzero-conquista-el-mercado-hispanohablante-con-inconsciente-un-emotivo-viaje-a-las-raices-de-la-identidad/" },
+      { "date": "2025-07-21", "title": "Intervista alle AnnoZzero — Radio Azzurra FM", "link": null },
+      { "date": "2025-03-23", "title": "Le interviste di Supermarket: AnnoZzero", "link": "https://open.spotify.com/episode/12xcH1HP1P97gjHHPm0jeM" },
+      { "date": "2025-03-21", "title": "Le AnnoZzero passano la preselezione per il concertone del Primo Maggio", "link": "https://www.lopinionista.it/le-annozzero-passano-la-preselezione-per-il-concertone-del-primo-maggio-205007.html" },
+      { "date": "2024-05-05", "title": "Audizioni 'Promuovi La Tua Musica': vincono Giuly Dary e Annozzero", "link": "https://www.lopinionista.it/audizioni-di-promuovi-la-tua-musica-a-milano-vincono-giuly-dary-annozzero-federico-tozzi-e-giovanni-liberatore-187921.html" },
+      { "date": "2024-04-02", "title": "Cerano, le \"AnnoZzero\" che cantano per l'inclusione", "link": "https://www.novaratoday.it/attualita/cerano-le-annozzero-che-cantano-per-l-inclusione.html" }
+    ]
+  },
+
+  "shop": {
+    "title": "Shop",
+    "products": [
+      { "name": "T-Shirt AnnoZzero", "description": "T-shirt in cotone organico con logo ricamato", "price": "€25", "icon": "👕", "link": "#" },
+      { "name": "CD Autografato — ORA", "description": "EP ORA con firma autografa di Bozz ed Elena", "price": "€20", "icon": "💿", "link": "#" },
+      { "name": "Vinile Limited Edition", "description": "Edizione speciale in vinile colorato, tiratura limitata", "price": "€35", "icon": "🎵", "link": "#" },
+      { "name": "Cappello AnnoZzero", "description": "Cappello con logo ricamato, taglia unica", "price": "€18", "icon": "🧢", "link": "#" }
+    ]
+  },
+
+  "contatti": {
+    "title": "Contatti",
+    "items": [
+      { "icon": "✉", "label": "EMAIL", "value": "annozzerocontatti@gmail.com", "href": "mailto:annozzerocontatti@gmail.com" },
+      { "icon": "🎤", "label": "BOOKING", "value": "Chiara Lavatelli Management", "href": null },
+      { "icon": "📍", "label": "BASE", "value": "Novara, Italia", "href": null }
+    ]
+  }
+}
