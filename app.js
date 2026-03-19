@@ -181,7 +181,7 @@
       '<div class="footer-contact"><a href="mailto:' + s.email + '">' + s.email + '</a></div></div>' +
       '</div>' +
       '<div class="footer-bottom">© ' + new Date().getFullYear() + ' Tutti i diritti riservati — ' + s.manager +
-      '<div class="footer-credit">Sito realizzato da <a href="https://myndus.it" target="_blank" rel="noopener"><img src="images/myndus-logo.png" alt="Myndus"> Myndus</a></div>' +
+      '<div class="footer-credit">Sito realizzato da <a href="https://myndus.site" target="_blank" rel="noopener"><img src="images/myndus-logo.png" alt="Myndus"> Myndus</a></div>' +
       '</div>';
   }
 
